@@ -67,11 +67,11 @@
   <!-- ============ EXAMPLES ============ -->
   <section class="examples" id="examples">
     <div class="container">
-      <h2>What does a Signature Trailer actually look like?</h2>
-      <p class="section-sub">Real 30–45 second films we've made for operators who were already winning — and wanted one video that gives the perfect first impression.</p>
+      <h2 class="fade-up">What does a Signature Trailer actually look like?</h2>
+      <p class="section-sub fade-up">Real 30–45 second films we've made for operators who were already winning — and wanted one video that gives the perfect first impression.</p>
 
       <div class="examples-grid">
-        <div class="example-card">
+        <div class="example-card fade-up fade-up-delay-1">
           <div class="video-wrap">
             <iframe src="https://player.vimeo.com/video/1056884726?h=&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -84,7 +84,7 @@
           </div>
         </div>
 
-        <div class="example-card">
+        <div class="example-card fade-up fade-up-delay-2">
           <div class="video-wrap">
             <iframe src="https://player.vimeo.com/video/1139896997?h=&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -97,7 +97,7 @@
           </div>
         </div>
 
-        <div class="example-card">
+        <div class="example-card fade-up fade-up-delay-3">
           <div class="video-wrap">
             <iframe src="https://player.vimeo.com/video/1163868980?h=&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -115,37 +115,45 @@
 
   <!-- ============ WHAT YOU GET ============ -->
   <section class="what-you-get">
+    <div class="bg-video">
+      <video autoplay muted loop playsinline>
+        <source src="https://player.vimeo.com/external/1056884726.hd.mp4?s=placeholder" type="video/mp4">
+      </video>
+    </div>
     <div class="container">
-      <h2>What you're actually getting</h2>
+      <h2 class="fade-up">What you're actually getting</h2>
       <div class="benefits">
-        <div class="benefit">
+        <div class="benefit fade-up fade-up-delay-1">
           <div class="benefit-marker"></div>
           <p>One 30–45 second Signature short film that becomes your default answer to "what do you do?"</p>
         </div>
-        <div class="benefit">
+        <div class="benefit fade-up fade-up-delay-2">
           <div class="benefit-marker"></div>
           <p>Shot in 1–2 days on‑site, then edited at the highest level.</p>
         </div>
-        <div class="benefit">
+        <div class="benefit fade-up fade-up-delay-3">
           <div class="benefit-marker"></div>
           <p>Designed to live on your website hero, pinned on your socials, and dropped into every important DM, email, pitch, and deck.</p>
         </div>
       </div>
-      <p class="closer">You don't need a hundred videos. You need one great one.<br>This is that one.</p>
-      <a href="#apply" class="btn btn-primary">Apply For Your Signature Trailer</a>
+      <div class="closer-card fade-up">
+        <p class="closer">You don't need a hundred videos. You need one great one. This is that one.</p>
+        <a href="#apply" class="btn btn-primary">Apply For Your Signature Trailer</a>
+      </div>
     </div>
   </section>
 
   <!-- ============ FORM ============ -->
   <section class="form-section" id="apply">
     <div class="container">
-      <h2>Apply for your Signature Trailer.</h2>
-      <div class="form-intro">
-        <p>If you want one 30–45 second video that nails who you are and what you've built, fill this out.</p>
-        <p>This is for people who want their whole story and offer captured in a single piece they can use everywhere.</p>
-        <p>We review every application and reply within 24–48 hours if it's a fit.</p>
-      </div>
-      <form class="apply-form" id="apply-form">
+      <div class="form-card fade-up">
+        <h2>Apply for your Signature Trailer.</h2>
+        <div class="form-intro">
+          <p>If you want one 30–45 second video that nails who you are and what you've built, fill this out.</p>
+          <p>This is for people who want their whole story and offer captured in a single piece they can use everywhere.</p>
+          <p>We review every application and reply within 24–48 hours if it's a fit.</p>
+        </div>
+        <form class="apply-form" id="apply-form">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
@@ -179,7 +187,8 @@
           <input type="text" name="company_url" tabindex="-1" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-primary btn-submit">Elevate My Brand</button>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -192,6 +201,16 @@
   </footer>
 
   <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
