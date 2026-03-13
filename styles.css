@@ -371,7 +371,8 @@ h1 em {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.12), 0 0 60px rgba(255,255,255,0.08), 0 0 120px rgba(255,255,255,0.04);
+  box-shadow: 0 0 20px rgba(255,255,255,0.15), 0 0 60px rgba(255,255,255,0.1), 0 0 140px rgba(255,255,255,0.06);
+  animation: glow-pulse 3s ease-in-out infinite;
   padding: 40px 40px;
   display: flex;
   align-items: center;
@@ -499,6 +500,17 @@ h1 em {
 .footer p {
   font-size: 13px;
   color: #444;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255,255,255,0.15), 0 0 60px rgba(255,255,255,0.1), 0 0 140px rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255,255,255,0.25), 0 0 80px rgba(255,255,255,0.15), 0 0 160px rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.25);
+  }
 }
 
 /* ============================================
