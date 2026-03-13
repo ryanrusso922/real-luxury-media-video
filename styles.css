@@ -369,8 +369,9 @@ h1 em {
   background: rgba(30,30,30,0.5);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.06), 0 0 80px rgba(255,255,255,0.03);
   padding: 40px 40px;
   display: flex;
   align-items: center;
