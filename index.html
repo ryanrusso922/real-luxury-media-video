@@ -257,7 +257,9 @@
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
-          const offset = window.innerWidth <= 768 ? 10 : 20;
+          const isMobile = window.innerWidth <= 768;
+          const isApply = href === '#apply';
+          const offset = isMobile ? (isApply ? -20 : 10) : 20;
           const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
           window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
         }
