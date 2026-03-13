@@ -38,7 +38,7 @@
       </div>
 
       <div class="hero-buttons">
-        <a href="#apply" class="btn btn-primary">Apply For Your Signature Trailer</a>
+        <a href="#apply" class="btn btn-primary"><strong>Elevate My Brand</strong></a>
         <a href="#examples" class="btn btn-secondary">See Client Trailers</a>
       </div>
 
@@ -62,7 +62,6 @@
           <img src="assets/logos/preferred.png" alt="Preferred Settlement" class="scroll-logo">
           <img src="assets/logos/ebg.png" alt="EBG" class="scroll-logo">
           <img src="assets/logos/remax.png" alt="RE/MAX" class="scroll-logo">
-          <img src="assets/logos/bennington.png" alt="Bennington Cigars" class="scroll-logo">
           <!-- Duplicate for seamless scroll -->
           <img src="assets/logos/pettingell.png" alt="Pettingell" class="scroll-logo">
           <img src="assets/logos/kokomo.png" alt="Kokomo Yacht Club" class="scroll-logo">
@@ -80,7 +79,7 @@
           <img src="assets/logos/preferred.png" alt="Preferred Settlement" class="scroll-logo">
           <img src="assets/logos/ebg.png" alt="EBG" class="scroll-logo">
           <img src="assets/logos/remax.png" alt="RE/MAX" class="scroll-logo">
-          <img src="assets/logos/bennington.png" alt="Bennington Cigars" class="scroll-logo">
+
         </div>
       </div>
     </div>
@@ -159,8 +158,8 @@
         </div>
       </div>
       <div class="closer-card fade-up">
-        <p class="closer">You don't need a hundred videos. You need one great one. This is that one.</p>
-        <a href="#apply" class="btn btn-primary">Apply For Your Signature Trailer</a>
+        <p class="closer">You don't need a hundred videos. You need one great one.</p>
+        <a href="#apply" class="btn btn-primary"><strong>Elevate My Brand</strong></a>
       </div>
     </div>
   </section>
@@ -208,7 +207,7 @@
         <div style="position:absolute;left:-9999px;" aria-hidden="true">
           <input type="text" name="company_url" tabindex="-1" autocomplete="off">
         </div>
-        <button type="submit" class="btn btn-primary btn-submit">Elevate My Brand</button>
+        <button type="submit" class="btn btn-primary btn-submit"><strong>Elevate My Brand</strong></button>
         </form>
       </div>
     </div>
@@ -238,7 +237,10 @@
       a.addEventListener('click', e => {
         e.preventDefault();
         const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (target) {
+          const y = target.getBoundingClientRect().top + window.pageYOffset - 20;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
       });
     });
 
