@@ -617,7 +617,7 @@ h1 em {
 @media (max-width: 768px) {
   h1 { font-size: 36px; }
   .hero-sub { font-size: 16px; }
-  .hero { padding: 24px 0 80px; }
+  .hero { padding: 24px 0 40px; }
 
   /* Nav: non-sticky on mobile, logo centered */
   .site-nav {
@@ -664,7 +664,8 @@ h1 em {
   .mobile-bottom-bar .btn-primary { flex: 65; }
   body { padding-bottom: 80px; }
 
-  .examples, .what-you-get, .form-section { padding: 80px 0; }
+  .examples { padding: 40px 0 80px; }
+  .what-you-get, .form-section { padding: 80px 0; }
   .examples h2, .what-you-get h2, .form-section h2 { font-size: 32px; }
   .section-sub { font-size: 15px; }
 
