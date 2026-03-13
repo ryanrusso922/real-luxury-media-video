@@ -653,11 +653,15 @@ h1 em {
     gap: 10px;
   }
   .mobile-bottom-bar .btn-sm {
-    flex: 1;
     text-align: center;
     padding: 12px 8px;
     font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .mobile-bottom-bar .btn-secondary { flex: 35; }
+  .mobile-bottom-bar .btn-primary { flex: 65; }
   body { padding-bottom: 80px; }
 
   .examples, .what-you-get, .form-section { padding: 80px 0; }
