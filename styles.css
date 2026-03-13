@@ -518,6 +518,13 @@ h1 em {
   letter-spacing: 1px;
 }
 
+.form-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 16px;
+}
+
 /* ============================================
    FOOTER
    ============================================ */
