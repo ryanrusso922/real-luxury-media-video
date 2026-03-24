@@ -548,8 +548,8 @@ h1 em {
 .radio-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 8px;
+  gap: 14px;
+  margin-top: 10px;
 }
 .radio-label {
   display: flex;
@@ -560,6 +560,13 @@ h1 em {
   font-weight: 300;
   cursor: pointer;
   line-height: 1.4;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+.radio-label:hover {
+  border-color: rgba(255,255,255,0.35);
 }
 .radio-label input[type="radio"] {
   accent-color: #fff;
