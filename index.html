@@ -222,19 +222,35 @@
           </div>
         </div>
         <div class="form-group full">
-          <label for="whatdoyoudo">What do you do?</label>
+          <label for="whatdoyoudo">What do you do, in one sentence?</label>
           <textarea id="whatdoyoudo" name="whatdoyoudo" rows="3"></textarea>
         </div>
         <div class="form-group full">
-          <label for="whynow">Why now?</label>
+          <label for="whynow">Why are you considering a Signature Trailer now?</label>
           <textarea id="whynow" name="whynow" rows="3"></textarea>
+        </div>
+        <div class="form-group full">
+          <label>When do you want your first impression online dialed in?</label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="timeline" value="In the next 30–60 days"> In the next 30–60 days</label>
+            <label class="radio-label"><input type="radio" name="timeline" value="Within the next 3–6 months"> Within the next 3–6 months</label>
+            <label class="radio-label"><input type="radio" name="timeline" value="Just exploring / no clear timeline"> Just exploring / no clear timeline</label>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>If this feels like a fit, which describes you best right now?</label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="readiness" value="I'm actively looking to invest in a premium, done-for-you Signature Trailer soon"> I'm actively looking to invest in a premium, done-for-you Signature Trailer soon</label>
+            <label class="radio-label"><input type="radio" name="readiness" value="I'm interested but need to plan budget and timing"> I'm interested but need to plan budget and timing</label>
+            <label class="radio-label"><input type="radio" name="readiness" value="I'm just curious / not ready to invest yet"> I'm just curious / not ready to invest yet</label>
+          </div>
         </div>
         <!-- Honeypot -->
         <div style="position:absolute;left:-9999px;" aria-hidden="true">
           <input type="text" name="company_url" tabindex="-1" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-primary btn-submit"><strong>Apply For My Signature Trailer</strong></button>
-        <p class="form-note">We review every application and reply within 24–48 hours if it's a fit.</p>
+        <p class="form-note">We review every application. After you apply, you'll pick a time for a call.<br>If it's clearly not a fit, I'll text you and cancel so we don't waste your time.</p>
         </form>
       </div>
     </div>
@@ -309,10 +325,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
-        form.reset();
-        humanInteracted = false;
-        btn.textContent = 'Application Submitted';
-        setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 4000);
+        window.location.href = 'https://calendly.com/jakepettingell44/real-luxury-media-discovery-call';
       } catch (err) {
         btn.textContent = 'Something went wrong — try again';
         setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 3000);
