@@ -320,11 +320,33 @@
       btn.disabled = true;
 
       try {
-        await fetch('https://hook.us1.make.com/39ft3zfxnugpd84sxq7t3h2pvlpudfuq', {
+        const makeWebhook = fetch('https://hook.us1.make.com/39ft3zfxnugpd84sxq7t3h2pvlpudfuq', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
+
+        const triggerWebhook = fetch('https://api.trigger.dev/api/v1/tasks/lead-to-notion/trigger', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer tr_prod_dUw3rGqpbYfEl6bW6F5E',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            payload: {
+              name: data.name || '',
+              email: data.email || '',
+              phone_number: data.phone || '',
+              website: data.website || '',
+              occupation: data.whatdoyoudo || '',
+              reason: data.whynow || '',
+              timeline: data.timeline || '',
+              readiness: data.readiness || ''
+            }
+          })
+        });
+
+        await Promise.allSettled([makeWebhook, triggerWebhook]);
         window.location.href = 'https://calendly.com/jakepettingell44/real-luxury-media-discovery-call';
       } catch (err) {
         btn.textContent = 'Something went wrong — try again';
