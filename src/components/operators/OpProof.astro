@@ -1,0 +1,55 @@
+---
+/* /operators — Section 5: The proof.
+   Three counters roll up on scroll (pipeline lands last), then the same
+   looping logo strip as realluxurymedia.com, then the trust line. */
+
+import { logos } from '@content/site';
+
+const stats = [
+  { value: 30, prefix: '', suffix: 'M+', delay: 0, label: 'Views generated' },
+  { value: 100, prefix: '', suffix: 'K+', delay: 0, label: 'Subscribers gained' },
+  { value: 10, prefix: '$', suffix: 'M+', delay: 1150, label: 'Added in pipeline' },
+];
+
+/* 16 logos, doubled for a seamless loop. */
+const marqueeLogos = [...logos, ...logos];
+---
+
+<section id="proof" class="oproof">
+  <div class="oproof__shell">
+    <p class="oproof__lead" data-reveal>In the last 12 months</p>
+
+    <div class="oproof__counters" data-counters>
+      {stats.map((stat, i) => (
+        <div class="oproof__stat" data-reveal style={`--ri: ${i}`}>
+          <span class="oproof__bar" aria-hidden="true"></span>
+          <span
+            class="oproof__num"
+            data-counter
+            data-value={stat.value}
+            data-prefix={stat.prefix}
+            data-suffix={stat.suffix}
+            data-delay={stat.delay}
+          >{`${stat.prefix}${stat.value}${stat.suffix}`}</span>
+          <span class="oproof__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="oproof__marquee" aria-label="Trusted businesses">
+      <div class="oproof__track" aria-hidden="true">
+        {marqueeLogos.map((logo) => (
+          <img src={`/logos/${logo}.png`} alt="" loading="lazy" />
+        ))}
+      </div>
+    </div>
+
+    <p class="oproof__trust" data-reveal>
+      <strong>Built for the best.</strong> Trusted by 30+ top businesses.
+    </p>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/counters.ts';
+</script>

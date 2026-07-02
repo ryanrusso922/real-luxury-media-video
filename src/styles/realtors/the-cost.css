@@ -1,0 +1,52 @@
+/* /realtors — The core line.
+   One large statement, centered, given room to land.
+   The earlier bug: max-width:30ch on the <blockquote> resolved ch against the
+   small inherited body font, collapsing it to a ~2-word column. Width now lives
+   on the shell in rem, so it holds a comfortable measure at the large size. */
+
+.realtors-page .rcost-section {
+  padding: clamp(7rem, 14vw, 12rem) var(--rail-gutter);
+  border-block: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(52, 211, 153, 0.06), transparent 42rem),
+    linear-gradient(180deg, var(--ink-soft) 0%, var(--ink) 100%);
+}
+
+.realtors-page .rcost-shell {
+  margin: 0 auto;
+  max-width: 48rem;
+  text-align: center;
+}
+
+/* Small brand accent above the statement to give it presence. */
+.realtors-page .rcost-shell::before {
+  content: '';
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin: 0 auto clamp(1.6rem, 3vw, 2.4rem);
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--brass-deep), var(--brass-light));
+}
+
+.realtors-page .rcost-statement {
+  margin: 0;
+  font-family: 'Source Serif Pro', 'Iowan Old Style', 'Georgia', serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+  color: rgba(244, 246, 246, 0.82);
+  text-wrap: balance;
+}
+
+/* The emotional hinge — italic + full ivory so it lifts off the line. */
+.realtors-page .rcost-hinge {
+  font-style: italic;
+  color: var(--ivory);
+}
+
+/* The payoff — emerald, the line that lands. */
+.realtors-page .rcost-emph {
+  color: var(--brass-light);
+}

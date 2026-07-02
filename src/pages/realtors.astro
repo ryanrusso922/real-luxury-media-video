@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+/* Lean content-system narrative (Jake's direction) */
+import Banner from '@components/realtors/Banner.astro';
+import TheCost from '@components/realtors/TheCost.astro';
+import RogerCase from '@components/realtors/RogerCase.astro';
+import TheSystem from '@components/realtors/TheSystem.astro';
+
+/* Carry-over sections — still used, retinted via per-section override CSS */
+import VslBlock from '@components/VslBlock.astro';
+import ApplySection from '@components/ApplySection.astro';
+
+import { realtorsContent } from '@content/realtors';
+import '../styles/realtors/index.css';
+
+const c = realtorsContent;
+
+const realtorsNavItems = [
+  { label: 'Overview', href: '#vsl' },
+  { label: 'Case Study', href: '#case' },
+  { label: 'What’s next', href: '#system' },
+];
+
+const realtorsNavCta = {
+  label: 'Apply for a seat',
+  href: '#apply',
+};
+---
+
+<BaseLayout
+  title="Real Luxury Media | A done-for-you content system for top realtors"
+  description="We keep the best agents top of mind, every single week. A done-for-you content system for agents doing $100M+, built so every seller feels like they already know you."
+>
+  <Header navItems={realtorsNavItems} navCta={realtorsNavCta} />
+  <div class="realtors-page">
+    <div class="realtors-page-grain" aria-hidden="true"></div>
+    <main>
+      <Banner />
+      {c.vsl && <VslBlock vsl={c.vsl} />}
+      <RogerCase />
+      <TheCost />
+      <TheSystem />
+      <ApplySection applySection={c.applySection} />
+    </main>
+  </div>
+  <Footer />
+</BaseLayout>

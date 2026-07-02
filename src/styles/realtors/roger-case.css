@@ -1,0 +1,114 @@
+/* /realtors — Roger Pettingell case study.
+   Centered, cinematic: heading, then the landscape film, then the 24/7 quote. */
+
+.realtors-page .rcase-section {
+  padding: clamp(6rem, 11vw, 9.5rem) var(--rail-gutter);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(52, 211, 153, 0.05), transparent 38rem),
+    linear-gradient(180deg, var(--ink-soft) 0%, var(--ink) 100%);
+}
+
+.realtors-page .rcase-shell {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ─── Heading ─────────────────────────────────────── */
+.realtors-page .rcase-head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.realtors-page .rcase-eyebrow {
+  margin: 0 0 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory-muted);
+}
+.realtors-page .rcase-name {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.4vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.036em;
+  line-height: 1;
+  color: var(--ivory);
+}
+.realtors-page .rcase-meta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: rgba(231, 234, 234, 0.6);
+}
+
+/* ─── Film ────────────────────────────────────────── */
+.realtors-page .rcase-film {
+  width: 100%;
+  max-width: 60rem;
+}
+.realtors-page .rcase-film .film-frame {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.8);
+}
+
+/* ─── Quote ───────────────────────────────────────── */
+.realtors-page .rcase-quote {
+  margin: clamp(2.4rem, 5vw, 3.6rem) 0 0;
+  max-width: 40rem;
+}
+.realtors-page .rcase-quote blockquote {
+  margin: 0;
+  font-family: 'Source Serif Pro', 'Iowan Old Style', 'Georgia', serif;
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  line-height: 1.32;
+  color: var(--ivory);
+  text-wrap: balance;
+}
+.realtors-page .rcase-quote figcaption {
+  margin-top: 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory-muted);
+}
+
+/* ─── CTA ─────────────────────────────────────────── */
+.realtors-page .rcase-cta {
+  margin-top: clamp(2rem, 4vw, 2.8rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  background: var(--brass);
+  color: #07221a;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(52, 211, 153, 0.22);
+  transition:
+    background-color 220ms var(--ease-out),
+    transform 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out);
+}
+.realtors-page .rcase-cta:hover {
+  background: var(--brass-light);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(52, 211, 153, 0.34);
+}
+.realtors-page .rcase-cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 220ms var(--ease-out);
+}
+.realtors-page .rcase-cta:hover svg { transform: translateX(3px); }

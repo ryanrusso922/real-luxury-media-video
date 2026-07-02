@@ -1,0 +1,22 @@
+/* /realtors — scoped override entry.
+   Loaded only by src/pages/realtors.astro. */
+
+/* Palette + chrome */
+@import './tokens.css';
+@import './header.css';
+@import './buttons.css';
+
+/* Lean content-system structure (Jake's direction) */
+@import './banner.css';
+@import './motion.css';
+@import './the-cost.css';
+@import './roger-case.css';
+@import './the-system.css';
+
+/* Carry-overs from prior pass — sections still used by the page */
+@import './apply-footer.css';
+@import './polish.css';
+
+.realtors-page :where(#vsl, #case, #cost, #system, #apply) {
+  scroll-margin-top: clamp(1.5rem, 4vw, 3rem);
+}

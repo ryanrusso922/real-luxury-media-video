@@ -1,0 +1,127 @@
+/* Design tokens, reset, page surface, anchor offsets, global focus and selection states.
+   Broadcast cinematic theme: variable sans display + mono spec-sheet metadata. */
+:root {
+  color-scheme: dark;
+  --ink: #060606;
+  --ink-soft: #0d0d0e;
+  --ink-deep: #030303;
+  --charcoal: #141416;
+  --charcoal-2: #1c1c1e;
+  --body: #e8e3db;
+  --ivory: #f4efe5;
+  --ivory-muted: rgba(232, 227, 219, 0.74);
+  --ivory-faint: rgba(244, 239, 229, 0.12);
+  --brass: #c9a06a;
+  --brass-light: #dcb986;
+  --brass-deep: #9d7a48;
+  --line: rgba(244, 239, 229, 0.14);
+  --line-soft: rgba(244, 239, 229, 0.07);
+  --line-strong: rgba(244, 239, 229, 0.32);
+  --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Helvetica, sans-serif;
+  --font-body: 'Instrument Sans', 'Helvetica Neue', Helvetica, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-broadcast: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --max-width: 1240px;
+  --rail-gutter: clamp(1.25rem, 5vw, 5rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--ink-deep);
+}
+
+#top,
+#proof,
+#fit,
+#what,
+#case,
+#video,
+#process,
+#apply,
+.fit-section {
+  scroll-margin-top: 4.8rem;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(
+      circle at 18% -10%,
+      rgba(201, 160, 106, 0.18),
+      transparent 38rem
+    ),
+    radial-gradient(
+      circle at 92% 18%,
+      rgba(201, 160, 106, 0.08),
+      transparent 30rem
+    ),
+    linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 46%, var(--ink-deep) 100%);
+  color: var(--body);
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-feature-settings: 'ss01' on, 'cv01' on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+blockquote p {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brass-light);
+  outline-offset: 0.35rem;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--brass);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 160, 106, 0.4);
+  border: 2px solid var(--ink-deep);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brass);
+}

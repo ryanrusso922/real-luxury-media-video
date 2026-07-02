@@ -1,0 +1,24 @@
+/* /operators (homepage) — scoped override entry.
+   Loaded only by src/pages/index.astro. Mirrors the /realtors design
+   language: cool dark base, emerald accent, Geist type, grain + film. */
+
+/* Palette + chrome */
+@import './tokens.css';
+@import './header.css';
+@import './buttons.css';
+@import './motion.css';
+
+/* Sections (Jake's operators spec) */
+@import './hero.css';
+@import './punch.css';
+@import './roger.css';
+@import './how.css';
+@import './proof.css';
+@import './close.css';
+
+/* Cross-section polish — loaded last */
+@import './chrome.css';
+
+.operators-page :where(#roger, #how, #proof, #apply) {
+  scroll-margin-top: clamp(1.5rem, 4vw, 3rem);
+}

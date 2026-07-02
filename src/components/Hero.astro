@@ -1,0 +1,144 @@
+---
+import ButtonLink from './ButtonLink.astro';
+import type { HeroContent, StoryVideo } from '@content/site';
+
+const { hero, heroVideo } = Astro.props as {
+  hero: HeroContent;
+  heroVideo: StoryVideo;
+};
+---
+
+<section class="hero-section" id="top">
+  <div class="hero-noise" aria-hidden="true"></div>
+
+  <div class="hero-copy" data-reveal>
+    <p class="eyebrow">{hero.eyebrow}</p>
+    <h1 class="hero-title">
+      {
+        hero.titleLines.map((line) => (
+          <span class="hero-title-line">{line}</span>
+        ))
+      }
+    </h1>
+    <p class="hero-body">{hero.body}</p>
+
+    <div class="hero-actions">
+      <ButtonLink href={hero.applyHref} label={hero.primaryCta} />
+    </div>
+
+    <a class="hero-scroll-prompt" href={hero.videoHref} aria-label={hero.scrollPrompt}>
+      <span class="hero-scroll-prompt__text">{hero.scrollPrompt}</span>
+      <span class="hero-scroll-prompt__cue" aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="hero-film" data-reveal>
+    <div class={`hero-film__frame hero-film__frame--${heroVideo.orientation}`} data-hero-video-card>
+      <video
+        class="hero-film__video-bg"
+        preload="metadata"
+        playsinline
+        muted
+        aria-hidden="true"
+        tabindex="-1"
+        poster={heroVideo.poster}
+        data-hero-video-bg
+      >
+        <source src={heroVideo.videoSrcMP4} type="video/mp4" />
+        <source src={heroVideo.videoSrcWEBM} type="video/webm" />
+      </video>
+      <video
+        class="hero-film__video"
+        controls
+        preload="metadata"
+        playsinline
+        poster={heroVideo.poster}
+        aria-label={heroVideo.ariaLabel}
+        data-hero-video-main
+      >
+        <source src={heroVideo.videoSrcMP4} type="video/mp4" />
+        <source src={heroVideo.videoSrcWEBM} type="video/webm" />
+      </video>
+      <button
+        class="hero-film__poster"
+        type="button"
+        aria-label={heroVideo.ariaLabel}
+        data-hero-video-play
+      >
+        <img
+          class="hero-film__poster-bg"
+          src={heroVideo.poster}
+          alt=""
+          loading="eager"
+          decoding="async"
+          aria-hidden="true"
+        />
+        <img
+          class="hero-film__poster-still"
+          src={heroVideo.poster}
+          alt=""
+          loading="eager"
+          decoding="async"
+          aria-hidden="true"
+        />
+        <span class="hero-film__poster-copy">
+          <span class="hero-film__poster-kicker">{heroVideo.eyebrow}</span>
+          <span class="hero-film__poster-play" aria-hidden="true">
+            <span></span>
+          </span>
+          <span class="hero-film__poster-title">{heroVideo.title}</span>
+        </span>
+      </button>
+      <div class="hero-film__caption" aria-hidden="true">
+        <span>Signature Film</span>
+        <strong>{heroVideo.title}</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const heroVideoCard = document.querySelector('[data-hero-video-card]');
+
+  if (heroVideoCard instanceof HTMLElement) {
+    const mainVideo = heroVideoCard.querySelector('[data-hero-video-main]');
+    const bgVideo = heroVideoCard.querySelector('[data-hero-video-bg]');
+    const playTrigger = heroVideoCard.querySelector('[data-hero-video-play]');
+
+    const syncHeroBackground = () => {
+      if (!(mainVideo instanceof HTMLVideoElement) || !(bgVideo instanceof HTMLVideoElement)) return;
+
+      if (Math.abs(bgVideo.currentTime - mainVideo.currentTime) > 0.25) {
+        bgVideo.currentTime = mainVideo.currentTime;
+      }
+    };
+
+    const playHeroVideo = () => {
+      if (!(mainVideo instanceof HTMLVideoElement)) return;
+
+      heroVideoCard.classList.add('is-playing');
+      mainVideo.play().catch(() => {});
+
+      if (bgVideo instanceof HTMLVideoElement) {
+        syncHeroBackground();
+        bgVideo.play().catch(() => {});
+      }
+    };
+
+    if (playTrigger instanceof HTMLButtonElement) {
+      playTrigger.addEventListener('click', playHeroVideo);
+    }
+
+    if (mainVideo instanceof HTMLVideoElement) {
+      mainVideo.addEventListener('play', () => {
+        heroVideoCard.classList.add('is-playing');
+        if (bgVideo instanceof HTMLVideoElement) bgVideo.play().catch(() => {});
+      });
+      mainVideo.addEventListener('timeupdate', syncHeroBackground);
+      mainVideo.addEventListener('seeking', syncHeroBackground);
+      mainVideo.addEventListener('pause', () => {
+        if (bgVideo instanceof HTMLVideoElement) bgVideo.pause();
+      });
+    }
+  }
+</script>

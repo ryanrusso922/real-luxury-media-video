@@ -1,0 +1,26 @@
+---
+/* /operators — Section 2: The punch.
+   Three escalating lines that build tension, then hand straight into the film.
+   No CTA (Jake's direction) — momentum carries the reader down. Asymmetric,
+   left-weighted, with a spine that draws down the page toward Roger's film. */
+
+const punch = {
+  one: 'You’re already the best in your business.',
+};
+---
+
+<section id="punch" class="opunch">
+  <div class="opunch__shell">
+    <span class="opunch__spine" aria-hidden="true"></span>
+    <div class="opunch__lines">
+      <p class="opunch__line opunch__line--one" data-reveal>{punch.one}</p>
+      <p class="opunch__line opunch__line--two" data-reveal style="--ri: 1">
+        But let’s be honest — <em>are you really dominating online?</em>
+      </p>
+      <p class="opunch__line opunch__line--three" data-reveal style="--ri: 2">
+        You’ve worked too hard, too long, to be losing deals to people who are
+        just <strong>showing up online better than you.</strong>
+      </p>
+    </div>
+  </div>
+</section>
