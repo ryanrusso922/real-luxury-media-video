@@ -1,0 +1,238 @@
+/* Header — cinematic: blended into hero, then transforms into solid sticky bar after scroll. */
+
+/* Scroll progress rule across the very top of the viewport */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 1.5px;
+  z-index: 40;
+  background: linear-gradient(90deg, var(--brass), var(--brass-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  min-height: 5.6rem;
+  padding: 1rem clamp(1.25rem, 4vw, 4rem);
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  backdrop-filter: none;
+  transition:
+    min-height 480ms var(--ease-broadcast),
+    padding 480ms var(--ease-broadcast),
+    background 320ms var(--ease-broadcast),
+    border-color 320ms var(--ease-broadcast),
+    backdrop-filter 320ms var(--ease-broadcast);
+}
+
+.site-header::before {
+  position: absolute;
+  inset: 0 0 0 0;
+  pointer-events: none;
+  content: '';
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0.46) 0%,
+    rgba(5, 5, 5, 0.16) 55%,
+    transparent 100%
+  );
+  opacity: 1;
+  transition: opacity 320ms ease;
+}
+
+.site-header::after {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  pointer-events: none;
+  content: '';
+  background: linear-gradient(90deg, transparent, var(--brass) 50%, transparent);
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+/* Scrolled state — collapses into a solid sticky bar with brass accent line */
+.site-header.is-scrolled {
+  min-height: 4.6rem;
+  padding: 0.7rem clamp(1.25rem, 4vw, 4rem);
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0.94), rgba(5, 5, 5, 0.78));
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(20px) saturate(1.15);
+}
+
+.site-header.is-scrolled::before {
+  opacity: 0;
+}
+
+.site-header.is-scrolled::after {
+  opacity: 0.5;
+}
+
+.brand-mark {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  width: clamp(88px, 7.2vw, 116px);
+  height: clamp(52px, 4.4vw, 66px);
+  background-color: #fff;
+  -webkit-mask: url('/assets/real-luxury-media-logo.png') center / contain no-repeat;
+          mask: url('/assets/real-luxury-media-logo.png') center / contain no-repeat;
+  text-indent: -9999px;
+  overflow: hidden;
+  transition:
+    width 480ms var(--ease-broadcast),
+    height 480ms var(--ease-broadcast),
+    transform 280ms var(--ease-out);
+}
+
+.site-header.is-scrolled .brand-mark {
+  width: clamp(72px, 5.6vw, 92px);
+  height: clamp(42px, 3.4vw, 52px);
+}
+
+.brand-mark img {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.brand-mark:hover,
+.brand-mark:focus-visible {
+  transform: translateY(-1px);
+}
+
+.nav-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.9rem, 2.2vw, 1.8rem);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 229, 0.72);
+}
+
+.nav-links a,
+.nav-cta {
+  position: relative;
+  transition:
+    color 220ms ease,
+    opacity 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    transform 260ms var(--ease-out);
+}
+
+.nav-links a::after {
+  position: absolute;
+  inset: auto 0 -6px 0;
+  height: 1px;
+  content: '';
+  background: var(--brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms var(--ease-out);
+}
+
+.nav-links a:hover {
+  color: var(--ivory);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-links a:focus-visible,
+.brand-mark:focus-visible,
+.nav-cta:focus-visible {
+  color: var(--ivory);
+}
+
+.nav-cta {
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  border: 1px solid var(--brass);
+  border-radius: 999px;
+  padding: 0.76rem 1.25rem;
+  color: #090805;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--brass);
+}
+
+.site-header.is-scrolled .nav-cta {
+  padding: 0.62rem 1.05rem;
+  font-size: 0.66rem;
+  background: var(--brass);
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible {
+  color: #090805;
+  border-color: var(--brass-light);
+  background: var(--brass-light);
+  box-shadow: 0 14px 30px rgba(201, 160, 106, 0.18);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 880px) {
+  .nav-links {
+    display: none;
+  }
+
+  .site-header {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    min-height: 4.8rem;
+  }
+
+  .site-header.is-scrolled {
+    min-height: 4.2rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header {
+    padding-inline: 0.9rem;
+  }
+
+  .nav-cta,
+  .site-header.is-scrolled .nav-cta {
+    padding: 0.64rem 0.72rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header.is-scrolled,
+  .brand-mark,
+  .nav-cta {
+    transition-duration: 0ms;
+  }
+}

@@ -1,0 +1,97 @@
+/* /realtors — hero override.
+   Retints the radial backdrop, title underline glow, scroll cue, video frame,
+   poster controls, portrait frame, play button, button-link, and brass shadow hits. */
+
+.realtors-page .hero-noise {
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(52, 211, 153, 0.12), transparent 34rem),
+    radial-gradient(
+      circle at 50% 78%,
+      rgba(52, 211, 153, 0.08),
+      transparent 42rem
+    ),
+    linear-gradient(180deg, rgba(7, 7, 10, 0.96) 0%, rgba(7, 7, 10, 0.9) 48%, rgba(7, 7, 10, 0.98) 100%);
+}
+
+.realtors-page .hero-title::after {
+  box-shadow: 0 0 24px rgba(110, 231, 183, 0);
+}
+.realtors-page .hero-copy.is-visible .hero-title::after {
+  box-shadow: 0 0 18px rgba(110, 231, 183, 0.24);
+}
+
+.realtors-page .hero-scroll-prompt:hover .hero-scroll-prompt__cue,
+.realtors-page .hero-scroll-prompt:focus-visible .hero-scroll-prompt__cue {
+  filter: drop-shadow(0 0 6px rgba(110, 231, 183, 0.55));
+}
+
+.realtors-page .hero-film__frame {
+  border: 1px solid rgba(110, 231, 183, 0.24);
+}
+
+.realtors-page .hero-film__poster-play::before {
+  border: 1px solid rgba(110, 231, 183, 0.36);
+}
+
+.realtors-page .hero-film__poster:hover .hero-film__poster-play,
+.realtors-page .hero-film__poster:focus-visible .hero-film__poster-play {
+  background: rgba(52, 211, 153, 0.22);
+}
+
+.realtors-page .hero-film__poster:focus-visible {
+  box-shadow: inset 0 0 0 1px rgba(110, 231, 183, 0.6);
+}
+
+.realtors-page .button-link:hover {
+  box-shadow: 0 18px 40px rgba(52, 211, 153, 0.24);
+}
+.realtors-page .button-link:focus-visible {
+  box-shadow:
+    0 0 0 1px rgba(110, 231, 183, 0.45),
+    0 16px 36px rgba(52, 211, 153, 0.18);
+}
+
+.realtors-page .portrait-frame {
+  box-shadow:
+    0 0 0 1px rgba(52, 211, 153, 0.06),
+    0 40px 100px rgba(0, 0, 0, 0.75);
+}
+.realtors-page .portrait-frame:focus-visible {
+  border-color: rgba(110, 231, 183, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(110, 231, 183, 0.34),
+    0 40px 100px rgba(0, 0, 0, 0.75);
+}
+
+.realtors-page .portrait-vignette {
+  background:
+    radial-gradient(
+      circle at 52% 30%,
+      rgba(110, 231, 183, 0.14),
+      transparent 22rem
+    ),
+    linear-gradient(180deg, transparent 56%, rgba(52, 211, 153, 0.08));
+}
+
+.realtors-page .portrait-frame:hover .play-button,
+.realtors-page .portrait-frame:focus-visible .play-button,
+.realtors-page .film-frame:hover .play-button:not(.play-button--resume) {
+  background: rgba(52, 211, 153, 0.88);
+}
+
+@media (max-width: 640px) {
+  .realtors-page .hero-proof__metric:nth-child(even) {
+    border-left: 1px solid rgba(110, 231, 183, 0.26);
+  }
+}
+
+/* Sentence-case tonal polish — strip the all-caps eyebrow on this page only,
+   leaving the spaced mono treatment but in mixed case for editorial feel. */
+.realtors-page .eyebrow {
+  text-transform: none;
+  letter-spacing: 0.18em;
+  color: var(--brass-light);
+}
+.realtors-page .eyebrow::before {
+  background: var(--brass);
+}

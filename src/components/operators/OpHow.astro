@@ -1,0 +1,48 @@
+---
+/* /operators — Section 4: How this works.
+   A numbered sequence, not a card row. Giant ghost numerals ride a spine that
+   draws down the page as you scroll; each step rises in turn. Jake's words. */
+
+const how = {
+  eyebrow: 'How this works',
+  title: 'We come to you. We shoot everything. You win.',
+  cards: [
+    {
+      num: '01',
+      title: 'We come to you.',
+      text: 'Our team flies out with everything required to win — concept, strategy, and plan. All you have to do is show up.',
+    },
+    {
+      num: '02',
+      title: 'We shoot everything.',
+      text: 'Months of content captured in a single visit. You show up on camera — we handle the rest.',
+    },
+    {
+      num: '03',
+      title: 'You win.',
+      text: 'We make sure you dominate online — because you’ve worked too hard not to.',
+    },
+  ],
+};
+---
+
+<section id="how" class="ohow">
+  <div class="ohow__shell">
+    <header class="ohow__head" data-reveal>
+      <p class="ohow__kicker">{how.eyebrow}</p>
+      <h2 class="ohow__title">{how.title}</h2>
+    </header>
+
+    <ol class="ohow__steps">
+      {how.cards.map((card, i) => (
+        <li class="ohow-step" data-reveal style={`--ri: ${i}`}>
+          <span class="ohow-step__num" aria-hidden="true">{card.num}</span>
+          <div class="ohow-step__body">
+            <h3 class="ohow-step__title">{card.title}</h3>
+            <p class="ohow-step__text">{card.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

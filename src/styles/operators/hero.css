@@ -1,0 +1,192 @@
+/* /operators — Section 1: Hero.
+   Manifesto headline rising word-by-word out of a living emerald aurora.
+   One primary action. No scroll cue — the punch line below does the pulling. */
+
+.operators-page .ohero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(7rem, 13vh, 11rem) var(--rail-gutter) clamp(4rem, 8vh, 6rem);
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Vignette + faint emerald crown so the type sits on real depth. */
+.operators-page .ohero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(64% 52% at 50% 30%, rgba(52, 211, 153, 0.07), transparent 72%),
+    radial-gradient(120% 95% at 50% 48%, transparent 50%, rgba(4, 5, 6, 0.62) 100%);
+}
+
+/* Living aurora — three emerald light-pools drifting slowly under the type. */
+.operators-page .ohero__aurora {
+  position: absolute;
+  inset: -22%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 40% at 30% 30%, rgba(52, 211, 153, 0.22), transparent 68%),
+    radial-gradient(32% 34% at 74% 58%, rgba(16, 185, 129, 0.16), transparent 70%),
+    radial-gradient(46% 44% at 50% 104%, rgba(110, 231, 183, 0.12), transparent 68%);
+  filter: blur(22px);
+  animation: ohero-aurora 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes ohero-aurora {
+  0%   { transform: translate3d(-3%, -2%, 0) scale(1.02) rotate(-1deg); }
+  50%  { transform: translate3d(2.5%, 1.5%, 0) scale(1.09) rotate(0.6deg); }
+  100% { transform: translate3d(3%, 3.5%, 0) scale(1.05) rotate(1.2deg); }
+}
+
+.operators-page .ohero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 54rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.4rem, 3vh, 2.2rem);
+}
+
+/* ─── Eyebrow ──────────────────────────────────────── */
+.operators-page .ohero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ivory-muted);
+}
+.operators-page .ohero__eyebrow-tick {
+  width: clamp(1.4rem, 3vw, 2.2rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass));
+}
+
+/* ─── Headline ─────────────────────────────────────── */
+.operators-page .ohero__title {
+  margin: 0;
+  max-width: 15ch;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.7rem, 6.7vw, 5.3rem);
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+  color: var(--ivory);
+  text-wrap: balance;
+}
+.operators-page .ohero__sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.operators-page .ohero__words { display: inline; }
+.operators-page .ohero__w {
+  display: inline-block;
+  margin-inline-end: 0.26em;
+}
+.operators-page .ohero__w:last-child { margin-inline-end: 0; }
+.operators-page .ohero__wi {
+  display: inline-block;
+  animation: ohero-word 920ms var(--ease-out) backwards;
+  animation-delay: calc(200ms + var(--wi) * 62ms);
+}
+.operators-page .ohero__wi--accent {
+  color: var(--brass-light);
+  text-shadow: 0 0 34px rgba(52, 211, 153, 0.35);
+}
+@keyframes ohero-word {
+  from { opacity: 0; transform: translateY(0.52em); filter: blur(12px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* ─── Sub ──────────────────────────────────────────── */
+.operators-page .ohero__sub {
+  margin: 0;
+  max-width: 38rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 1.7vw, 1.48rem);
+  line-height: 1.42;
+  color: var(--ivory-muted);
+  animation: ohero-fade 1000ms var(--ease-out) 820ms backwards;
+}
+@keyframes ohero-fade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ─── CTA — pill with a slow light sweep ───────────── */
+.operators-page .ohero__cta {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: clamp(0.4rem, 1.6vh, 1rem);
+  padding: 1.05rem 1.95rem;
+  border-radius: 999px;
+  background: var(--brass);
+  color: #07221a;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 16px 38px rgba(52, 211, 153, 0.24);
+  animation: ohero-fade 1000ms var(--ease-out) 1000ms backwards;
+  transition:
+    background-color 220ms var(--ease-out),
+    transform 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out);
+}
+.operators-page .ohero__cta-label { position: relative; z-index: 1; }
+.operators-page .ohero__cta svg {
+  position: relative;
+  z-index: 1;
+  width: 15px; height: 15px;
+  transition: transform 220ms var(--ease-out);
+}
+/* Light sweep that runs across the pill on hover. */
+.operators-page .ohero__cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 720ms var(--ease-out);
+}
+.operators-page .ohero__cta:hover {
+  background: var(--brass-light);
+  transform: translateY(-2px);
+  box-shadow: 0 22px 46px rgba(52, 211, 153, 0.34);
+}
+.operators-page .ohero__cta:hover::after { transform: translateX(120%); }
+.operators-page .ohero__cta:hover svg { transform: translateX(4px); }
+.operators-page .ohero__cta:active { transform: translateY(0); }
+
+/* ─── Reduced motion ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .operators-page .ohero__aurora { animation: none; }
+  .operators-page .ohero__wi,
+  .operators-page .ohero__sub,
+  .operators-page .ohero__cta { animation: none; }
+  .operators-page .ohero__cta::after { display: none; }
+}

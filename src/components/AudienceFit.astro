@@ -1,0 +1,40 @@
+---
+import type { AudienceFit } from '@content/site';
+
+const { audienceFit } = Astro.props as { audienceFit: AudienceFit };
+---
+
+<section class="fit-section" id="fit">
+  <div class="fit-shell" data-reveal>
+    <header class="fit-head">
+      <p class="eyebrow">{audienceFit.eyebrow}</p>
+      <h2 class="fit-title">{audienceFit.title}</h2>
+    </header>
+
+    <div class="fit-grid">
+      <div class="fit-col fit-col--for">
+        <p class="fit-col__label"><span class="fit-col__label-dot" aria-hidden="true"></span>For</p>
+        <ul class="fit-list fit-list--for">
+          {audienceFit.forList.map((item, i) => (
+            <li style={`--row-i: ${i}`}>
+              <span class="fit-list__mark" aria-hidden="true">+</span>
+              <span class="fit-list__text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="fit-col fit-col--not">
+        <p class="fit-col__label"><span class="fit-col__label-dot" aria-hidden="true"></span>Not for</p>
+        <ul class="fit-list fit-list--not">
+          {audienceFit.notForList.map((item, i) => (
+            <li style={`--row-i: ${i}`}>
+              <span class="fit-list__mark" aria-hidden="true">−</span>
+              <span class="fit-list__text">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

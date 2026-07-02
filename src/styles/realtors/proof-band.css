@@ -1,0 +1,27 @@
+/* /realtors — proof-band override.
+   Retints brass radial wash, stat hover glow, and text-shadow blooms. */
+.realtors-page .proof-band {
+  background:
+    radial-gradient(
+      ellipse at 50% 80%,
+      rgba(52, 211, 153, 0.18),
+      transparent 38rem
+    ),
+    linear-gradient(180deg, rgba(10, 10, 12, 0) 0%, rgba(10, 10, 12, 0.4) 100%);
+}
+
+.realtors-page .proof-band__stat:hover {
+  background: linear-gradient(180deg, rgba(52, 211, 153, 0.06), transparent 60%);
+}
+
+.realtors-page .proof-band__stat strong {
+  text-shadow: 0 0 0 rgba(110, 231, 183, 0);
+}
+
+.realtors-page .proof-band__stat.is-visible strong {
+  text-shadow: 0 0 38px rgba(110, 231, 183, 0.28);
+}
+
+.realtors-page .proof-band__stat:hover strong {
+  text-shadow: 0 0 48px rgba(110, 231, 183, 0.42);
+}

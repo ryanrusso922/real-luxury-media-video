@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+/* Operators homepage (Jake's direction) — /realtors design language. */
+import OpHero from '@components/operators/OpHero.astro';
+import OpPunch from '@components/operators/OpPunch.astro';
+import OpRoger from '@components/operators/OpRoger.astro';
+import OpHow from '@components/operators/OpHow.astro';
+import OpProof from '@components/operators/OpProof.astro';
+import OpClose from '@components/operators/OpClose.astro';
+
+import '../styles/operators/index.css';
+
+const navItems = [
+  { label: 'The work', href: '#roger' },
+  { label: 'How it works', href: '#how' },
+  { label: 'Proof', href: '#proof' },
+];
+
+const navCta = { label: 'Apply for a seat', href: '#apply' };
+---
+
+<BaseLayout
+  title="Real Luxury Media — content the best operators actually call"
+  description="We fly out, shoot everything, and don’t leave until you win. A done-for-you content system for operators at the top of their field."
+>
+  <Header navItems={navItems} navCta={navCta} homeHref="#top" />
+  <div class="operators-page">
+    <div class="operators-page-grain" aria-hidden="true"></div>
+    <main>
+      <OpHero />
+      <OpPunch />
+      <OpRoger />
+      <OpHow />
+      <OpProof />
+      <OpClose />
+    </main>
+  </div>
+  <Footer />
+</BaseLayout>

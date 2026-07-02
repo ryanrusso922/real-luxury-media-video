@@ -1,0 +1,114 @@
+/* /operators — Section 3: Roger's video.
+   The film stands cold, bracketed by a cinematic viewfinder frame, then a
+   credential bar with $3B pulled large. The player itself is styled globally. */
+
+.operators-page .oroger {
+  padding: clamp(3.5rem, 7vw, 6rem) var(--rail-gutter) clamp(6rem, 11vw, 9.5rem);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(52, 211, 153, 0.05), transparent 38rem),
+    linear-gradient(180deg, var(--ink-soft) 0%, var(--ink) 100%);
+}
+
+.operators-page .oroger__shell {
+  max-width: 64rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─── Viewfinder frame ─────────────────────────────── */
+.operators-page .oroger__frame {
+  position: relative;
+  width: 100%;
+  padding: clamp(8px, 1.1vw, 14px);
+}
+/* Soft emerald pool behind the film for depth. */
+.operators-page .oroger__frame::before {
+  content: '';
+  position: absolute;
+  inset: -6% -3%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(52, 211, 153, 0.10), transparent 72%);
+  filter: blur(14px);
+}
+
+.operators-page .oroger__corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 2px solid rgba(52, 211, 153, 0.6);
+  pointer-events: none;
+  z-index: 2;
+}
+.operators-page .oroger__corner--tl { top: 0; left: 0; border-right: 0; border-bottom: 0; border-top-left-radius: 6px; }
+.operators-page .oroger__corner--tr { top: 0; right: 0; border-left: 0; border-bottom: 0; border-top-right-radius: 6px; }
+.operators-page .oroger__corner--bl { bottom: 0; left: 0; border-right: 0; border-top: 0; border-bottom-left-radius: 6px; }
+.operators-page .oroger__corner--br { bottom: 0; right: 0; border-left: 0; border-top: 0; border-bottom-right-radius: 6px; }
+
+.operators-page .oroger__film {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.operators-page .oroger__film .film-frame {
+  border-radius: 0.85rem;
+  overflow: hidden;
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.82);
+}
+
+/* ─── Credential bar ───────────────────────────────── */
+.operators-page .oroger__meta {
+  width: 100%;
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  padding-top: clamp(1.2rem, 2.4vw, 1.8rem);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem 1.4rem;
+  flex-wrap: wrap;
+}
+.operators-page .oroger__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.95rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ivory);
+}
+.operators-page .oroger__stat {
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+.operators-page .oroger__stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.4vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  color: var(--brass-light);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+  text-shadow: 0 0 40px rgba(52, 211, 153, 0.28);
+}
+.operators-page .oroger__stat-label {
+  font-family: var(--font-mono);
+  font-size: clamp(0.74rem, 1.1vw, 0.9rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ivory-muted);
+}
+
+@media (max-width: 520px) {
+  .operators-page .oroger__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .operators-page .oroger__corner { width: 18px; height: 18px; }
+}

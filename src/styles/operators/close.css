@@ -1,0 +1,175 @@
+/* /operators — Section 6: The close.
+   A framed finale. The panel sits over a slow emerald aurora that bookends the
+   hero, so the page opens and closes on the same light. */
+
+.operators-page .oclose {
+  position: relative;
+  padding: clamp(6rem, 12vw, 10rem) var(--rail-gutter) clamp(6rem, 12vw, 9rem);
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(16, 185, 129, 0.06), transparent 32rem),
+    linear-gradient(180deg, var(--ink) 0%, var(--ink-deep) 100%);
+}
+
+/* Aurora bookend — echoes the hero, quieter. */
+.operators-page .oclose__aurora {
+  position: absolute;
+  inset: -30% -10% auto;
+  height: 80%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 50% 30%, rgba(52, 211, 153, 0.16), transparent 70%),
+    radial-gradient(30% 40% at 30% 60%, rgba(16, 185, 129, 0.10), transparent 72%);
+  filter: blur(26px);
+  animation: oclose-aurora 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes oclose-aurora {
+  from { transform: translate3d(-3%, -2%, 0) scale(1.02); }
+  to   { transform: translate3d(3%, 2%, 0) scale(1.1); }
+}
+
+/* ─── Panel ────────────────────────────────────────── */
+.operators-page .oclose__panel {
+  position: relative;
+  z-index: 1;
+  max-width: 45rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1rem, 2.2vw, 1.5rem);
+  padding: clamp(2.8rem, 6vw, 4.8rem) clamp(1.6rem, 5vw, 4rem);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background:
+    radial-gradient(130% 90% at 50% 0%, rgba(52, 211, 153, 0.08), transparent 60%),
+    linear-gradient(180deg, rgba(231, 234, 234, 0.035), transparent 55%),
+    rgba(8, 10, 12, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(244, 246, 246, 0.06),
+    0 50px 110px -50px rgba(0, 0, 0, 0.85);
+}
+/* Emerald light along the top edge. */
+.operators-page .oclose__panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(90deg, transparent, var(--brass) 50%, transparent);
+  opacity: 0.6;
+}
+
+.operators-page .oclose__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 0 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass-light);
+}
+.operators-page .oclose__rule {
+  width: clamp(1.4rem, 4vw, 2.4rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass));
+}
+.operators-page .oclose__rule:last-child {
+  background: linear-gradient(90deg, var(--brass), transparent);
+}
+
+.operators-page .oclose__lead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.8vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  color: var(--ivory);
+  text-wrap: balance;
+}
+.operators-page .oclose__line {
+  margin: 0 auto;
+  max-width: 38ch;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  line-height: 1.5;
+  color: var(--ivory-muted);
+}
+.operators-page .oclose__line--soft {
+  font-size: clamp(0.98rem, 1.4vw, 1.12rem);
+  color: rgba(231, 234, 234, 0.6);
+}
+
+/* ─── CTA — same light sweep as the hero ───────────── */
+.operators-page .oclose__cta {
+  position: relative;
+  overflow: hidden;
+  margin: clamp(1rem, 2.4vw, 1.6rem) auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.05rem 1.95rem;
+  border-radius: 999px;
+  background: var(--brass);
+  color: #07221a;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow:
+    0 10px 24px -6px rgba(52, 211, 153, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+  transition:
+    background-color 220ms var(--ease-out),
+    transform 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out);
+}
+.operators-page .oclose__cta-label { position: relative; z-index: 1; }
+.operators-page .oclose__cta svg {
+  position: relative;
+  z-index: 1;
+  width: 15px; height: 15px;
+  transition: transform 220ms var(--ease-out);
+}
+.operators-page .oclose__cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 720ms var(--ease-out);
+}
+.operators-page .oclose__cta:hover {
+  background: var(--brass-light);
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 34px -8px rgba(52, 211, 153, 0.42),
+    0 3px 8px rgba(0, 0, 0, 0.32);
+}
+.operators-page .oclose__cta:hover::after { transform: translateX(120%); }
+.operators-page .oclose__cta:hover svg { transform: translateX(4px); }
+.operators-page .oclose__cta:active { transform: translateY(0); }
+
+.operators-page .oclose__trust {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(231, 234, 234, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .operators-page .oclose__aurora { animation: none; }
+  .operators-page .oclose__cta::after { display: none; }
+}

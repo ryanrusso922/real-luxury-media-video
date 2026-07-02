@@ -1,0 +1,39 @@
+---
+import type { Deliverable, DeliverablesSection } from '@content/site';
+
+const { deliverables, deliverablesSection } = Astro.props as {
+  deliverables: Deliverable[];
+  deliverablesSection: DeliverablesSection;
+};
+---
+
+<section class="section section--ivory deliverables-section" id="what">
+  <div class="deliverables-head" data-reveal>
+    <div class="deliverables-head__left">
+      <p class="eyebrow">{deliverablesSection.eyebrow}</p>
+      <h2>
+        {deliverablesSection.titleLines.map((line) => <span>{line}</span>)}
+      </h2>
+    </div>
+    <div class="deliverables-head__right">
+      <p>{deliverablesSection.subhead}</p>
+      <p class="deliverables-callout">{deliverablesSection.callout}</p>
+    </div>
+  </div>
+
+  <div class="deliverable-grid">
+    {deliverables.map((item, i) => (
+      <article
+        class:list={["deliverable-card", { "deliverable-card--wide": item.featured }]}
+        data-reveal
+        style={`--card-i: ${i}`}
+      >
+        <span class="deliverable-card__num" aria-hidden="true">{item.kicker}</span>
+        <div class="deliverable-card__body">
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

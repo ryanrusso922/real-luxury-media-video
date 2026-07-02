@@ -1,0 +1,123 @@
+---
+import type { StoryVideo, WorkStrip } from '@content/site';
+
+const { storyVideos, workStrip } = Astro.props as {
+  storyVideos: StoryVideo[];
+  workStrip: WorkStrip;
+};
+---
+
+<section class="work-band" id="video">
+  <div class="work-band__heading" data-reveal>
+    <p class="eyebrow">{workStrip.eyebrow}</p>
+    <h2>{workStrip.title}</h2>
+    {workStrip.intro && <p>{workStrip.intro}</p>}
+  </div>
+
+  <div class="work-band__grid">
+    {
+      storyVideos.map((video) => (
+        <article
+          class={`story-video-card story-video-card--${video.variant}`}
+          data-reveal
+        >
+          <div
+            class={`film-frame film-frame--${video.orientation}`}
+            aria-label={video.ariaLabel}
+            data-video-card
+          >
+            {video.orientation === 'portrait' && (
+              <video
+                class="film-video-bg"
+                preload="metadata"
+                playsinline
+                muted
+                aria-hidden="true"
+                tabindex="-1"
+                poster={video.poster}
+                data-video-bg
+              >
+                <source src={video.videoSrcMP4} type="video/mp4" />
+                <source src={video.videoSrcWEBM} type="video/webm" />
+              </video>
+            )}
+            <video
+              class="film-video"
+              preload="metadata"
+              playsinline
+              aria-label={video.ariaLabel}
+              poster={video.poster}
+              data-video-main
+            >
+              <source src={video.videoSrcMP4} type="video/mp4" />
+              <source src={video.videoSrcWEBM} type="video/webm" />
+            </video>
+            <button
+              type="button"
+              class="film-surface"
+              aria-label={`Pause or resume ${video.title}`}
+              data-video-surface
+            >
+            </button>
+            <div class="film-placeholder" data-video-placeholder>
+              <div class="film-grain" aria-hidden="true"></div>
+
+              <div class="film-seal">
+                <div class="film-seal__top">
+                  <span class="film-seal__rule" aria-hidden="true"></span>
+                  <p class="film-seal__label">{video.eyebrow}</p>
+                  <span class="film-seal__rule" aria-hidden="true"></span>
+                </div>
+
+                <button
+                  type="button"
+                  class="film-seal__mark"
+                  aria-label={video.ariaLabel}
+                  data-play-trigger
+                >
+                  <span class="film-seal__arrow" aria-hidden="true"></span>
+                </button>
+
+                <h3 class="film-seal__title">{video.title}</h3>
+              </div>
+            </div>
+            <div class="film-paused" aria-hidden="true">
+              <button
+                type="button"
+                class="play-button play-button--small play-button--resume"
+                aria-label={`Resume ${video.title}`}
+                data-resume-trigger
+              >
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="film-hud" aria-hidden="true">
+              <span class="film-hud__time" data-time-current>0:00</span>
+              <button
+                type="button"
+                class="film-hud__track"
+                aria-label={`Scrub ${video.title}`}
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                data-progress-track
+              >
+                <span class="film-hud__fill" data-progress-fill></span>
+                <span class="film-hud__playhead" data-progress-playhead></span>
+              </button>
+              <span class="film-hud__time" data-time-total>0:00</span>
+            </div>
+          </div>
+          <div class="story-video-copy">
+            <p>{video.description}</p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import '../scripts/video-cards.ts';
+</script>
+

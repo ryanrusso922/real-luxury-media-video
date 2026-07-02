@@ -1,0 +1,39 @@
+/* Responsive overrides — most are handled inside section files now. This catches global mobile shifts. */
+@media (max-width: 640px) {
+  :root {
+    --rail-gutter: 1.1rem;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .site-header {
+    min-height: 4.4rem;
+    padding: 0.7rem 1rem;
+  }
+
+  h1 {
+    max-width: none;
+    font-size: clamp(2.7rem, 11vw, 3.8rem);
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+    line-height: 1.02;
+  }
+
+  .hero-actions,
+  .section-action {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-link {
+    width: 100%;
+    justify-content: space-between;
+    min-height: 3.6rem;
+  }
+}
