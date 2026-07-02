@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "deploy": "astro build && gh-pages -d dist",
+    "deploy": "pnpm build && git add dist -f && git commit -m 'Deploy: updates' && git subtree push --prefix dist origin main",
     "preview": "astro preview"
   },
   "dependencies": {
